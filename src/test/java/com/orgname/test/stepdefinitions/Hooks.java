@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.net.MalformedURLException;
+
 public class Hooks {
 
         private static final Logger logger = LoggerFactory.getLogger(Hooks.class);
@@ -29,7 +31,7 @@ public class Hooks {
             logger.info("Setting up Api");
         }
 
-        @After ("@APIOuth or @Web")
+        @After ("@APIOuth or @Web or @BrowserStack")
         public void tearDownWeb(Scenario scenario) {
             logger.info("Tear down Web Driver!");
             if (scenario.isFailed()) {
@@ -49,4 +51,11 @@ public class Hooks {
         public void tearDownApi(Scenario scenario) {
 
         }
+        @Before ("@BrowserStack")
+        public void setupWebBrowserStack() throws MalformedURLException {
+            logger.info("Setting up Web Driver for BrowserStack!");
+            webDriverFactory.setUpWebDriverBrowserStack();
+        }
+
+
 }

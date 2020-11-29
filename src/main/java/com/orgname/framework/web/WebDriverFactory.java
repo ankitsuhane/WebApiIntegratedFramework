@@ -5,12 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @Component
 @Scope("cucumber-glue")
@@ -56,6 +61,25 @@ public class WebDriverFactory {
                 throw new IllegalStateException(errorMessage);
         }
         logger.info(String.format("Browser is set to %s", browser));
+    }
+
+    @Bean
+    @Scope("cucumber-glue")
+    public void setUpWebDriverBrowserStack() throws MalformedURLException {
+        final String USERNAME = "ankitsuhane1";
+        final String AUTOMATE_KEY = "paJK42mAW6u8pTAopa9X";
+        final String BrowserStackUrl = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+        caps.setCapability("os", "Windows");
+        caps.setCapability("os_version", "10");
+        caps.setCapability("browser", "Chrome");
+        caps.setCapability("browser_version", "80");
+        caps.setCapability("name", "ankitsuhane1's First Test");
+
+        webDriver = new RemoteWebDriver(new URL(BrowserStackUrl), caps);
+
     }
 
     public final WebDriver getWebDriver() {	return webDriver; }

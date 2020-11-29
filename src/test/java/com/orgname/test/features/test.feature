@@ -1,6 +1,6 @@
 Feature: ankit test here
 
-  @Web
+  @Web @BrowserStack
   Scenario: Title of your scenario
     Given I want to click onlinesbi link
     When do nothing
