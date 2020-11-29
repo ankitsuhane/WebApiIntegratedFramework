@@ -1,0 +1,63 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.orgname.framework:PageFactory >------------------
+[INFO] Building PageFactory 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ PageFactory ---
+[INFO] Deleting C:\Users\ankit\eclipse-workspace\Pagefactory\target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ PageFactory ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ PageFactory ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to C:\Users\ankit\eclipse-workspace\Pagefactory\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ PageFactory ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ PageFactory ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 7 source files to C:\Users\ankit\eclipse-workspace\Pagefactory\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M3:test (default-test) @ PageFactory ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.orgname.test.web.testRunner.TestRunner
+do nothing:
+Webdriver in teardown: ChromeDriver: chrome on WINDOWS (7a258623fd7da5fc49ed00691396e80b)
+Feature: ankit test here
+
+  Scenario: Title of your scenario       # src/test/java/com/orgname/test/web/features/test.feature:3
+    Given I want to click onlinesbi link # TestStepDefinition.java:18
+    When do nothing                      # TestStepDefinition.java:22
+    Then do nothings                     # TestStepDefinition.java:26
+
+1 Scenarios (1 passed)
+3 Steps (3 passed)
+0m19.889s
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.528 s - in com.orgname.test.web.testRunner.TestRunner
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ PageFactory ---
+[INFO] Building jar: C:\Users\ankit\eclipse-workspace\Pagefactory\target\PageFactory-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ PageFactory ---
+[INFO] Installing C:\Users\ankit\eclipse-workspace\Pagefactory\target\PageFactory-1.0-SNAPSHOT.jar to C:\Users\ankit\.m2\repository\com\orgname\framework\PageFactory\1.0-SNAPSHOT\PageFactory-1.0-SNAPSHOT.jar
+[INFO] Installing C:\Users\ankit\eclipse-workspace\Pagefactory\pom.xml to C:\Users\ankit\.m2\repository\com\orgname\framework\PageFactory\1.0-SNAPSHOT\PageFactory-1.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  33.253 s
+[INFO] Finished at: 2020-10-03T22:43:30+01:00
+[INFO] ------------------------------------------------------------------------
