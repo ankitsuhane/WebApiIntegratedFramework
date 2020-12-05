@@ -176,13 +176,15 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${maven-surefire-plugin.version}</version>
           <configuration>
-            <!-- <forkCount>3</forkCount> <reuseForks>true</reuseForks> -->
+          <!-- <forkCount>2</forkCount>
+            <reuseForks>true</reuseForks> -->
             <includes>
               <include>**/*Runner.java</include>
             </includes>
             <systemPropertyVariables>
-              <!-- <propertyName>${env.PARAM}</propertyName> <browserName>CHROME</browserName>
+              <!-- <propertyName>${env.PARAM}</propertyName>browserName>CHROME</browserName>
                   <applicationName>MYA</applicationName> -->
+              <localRemote>container</localRemote>
             </systemPropertyVariables>
           </configuration>
         </plugin>
@@ -198,7 +200,6 @@
                 <goal>generate</goal>
               </goals>
               <configuration>
-
                 <projectName>cucumberReport</projectName>
                 <outputDirectory>${project.build.directory}</outputDirectory>
                 <inputDirectory>${project.build.directory}</inputDirectory>
