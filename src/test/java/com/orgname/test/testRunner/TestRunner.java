@@ -9,13 +9,9 @@ import org.junit.runner.RunWith;
 		features = "src/test/java/com/orgname/test/features",
 		glue = "com.orgname.test.stepdefinitions",
 		//dryRun=true,
-		 //tags = {"@APIOuth, @Web"},
-		tags = {"@BrowserStack"},
+		 tags = {"@APIOuth or @Web"},
+		//tags = {"@BrowserStack"},
 		monochrome=true)
 
 public class TestRunner {
-/*	public void test(){
-		System.out.println("est here");
-	}*/
-
 }

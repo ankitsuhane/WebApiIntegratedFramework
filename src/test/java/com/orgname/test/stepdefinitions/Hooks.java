@@ -21,16 +21,24 @@ public class Hooks {
         WebDriverFactory webDriverFactory;
 
         @Before ("@APIOuth or @Web")
-        public void setupWeb(){
+        public void setupWeb() throws MalformedURLException {
             logger.info("Setting up Web Driver!");
-            webDriverFactory.setUpWebDriver();
+            switch (System.getProperty("localRemote")){
+                case "local":
+                       webDriverFactory.setUpWebDriverLocal();
+                    break;
+                case "browserStack":
+                    webDriverFactory.setUpWebDriverBrowserStack();
+                    break;
+                case "container":
+                    webDriverFactory.setUpWebDriverContainer();
+                    break;
+            }
         }
-
         @Before ("@API")
         public void setupApi(){
             logger.info("Setting up Api");
         }
-
         @After ("@APIOuth or @Web or @BrowserStack")
         public void tearDownWeb(Scenario scenario) {
             logger.info("Tear down Web Driver!");
@@ -51,11 +59,4 @@ public class Hooks {
         public void tearDownApi(Scenario scenario) {
 
         }
-        @Before ("@BrowserStack")
-        public void setupWebBrowserStack() throws MalformedURLException {
-            logger.info("Setting up Web Driver for BrowserStack!");
-            webDriverFactory.setUpWebDriverBrowserStack();
-        }
-
-
 }

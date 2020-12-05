@@ -36,9 +36,13 @@ public class WebDriverFactory {
     @Value("${webdriver.wait.secs}")
     private int webDriverWait;
 
+    @Value("${containerUrl}")
+    private String ContainerUrl;
+
+
     @Bean
     @Scope("cucumber-glue")
-    public void setUpWebDriver() throws IllegalStateException {
+    public void setUpWebDriverLocal() throws IllegalStateException {
         switch (browser.toLowerCase()) {
             case "firefox":
                 logger.info("Running Firefox Web Driver with Driver Path:- {}", geckoDriver);
@@ -81,6 +85,39 @@ public class WebDriverFactory {
         webDriver = new RemoteWebDriver(new URL(BrowserStackUrl), caps);
 
     }
+
+    @Bean
+    @Scope("cucumber-glue")
+    public void setUpWebDriverContainer() throws MalformedURLException {
+		
+        DesiredCapabilities caps = new DesiredCapabilities();
+		
+        switch (browser.toLowerCase()) {
+            case "firefox":
+                logger.info("Running Firefox Web Driver with Driver Path:- {}", geckoDriver);
+                //System.setProperty("webdriver.gecko.driver", geckoDriver);
+                WebDriverManager.firefoxdriver().setup();
+                caps.setCapability("browserName", "firefox");
+                webDriver = new RemoteWebDriver(new URL(ContainerUrl), caps);
+
+                break;
+            case "chrome":
+                logger.info("Running Chrome Web Driver with Driver Path:- {}");
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("disable-infobars");
+                chromeOptions.addArguments("--start-maximized");
+                WebDriverManager.chromedriver().setup();
+                caps.setCapability("browserName", "chrome");
+                webDriver = new RemoteWebDriver(new URL(ContainerUrl), caps);
+                break;
+            default:
+                String errorMessage = String.format("%s is not a recognised option.", browser);
+                throw new IllegalStateException(errorMessage);
+        }
+
+
+    }
+
 
     public final WebDriver getWebDriver() {	return webDriver; }
 }
