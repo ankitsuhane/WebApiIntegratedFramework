@@ -1,9 +1,11 @@
 package com.orgname.framework.web;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -16,10 +18,11 @@ import org.springframework.stereotype.Component;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 
 @Component
 @Scope("cucumber-glue")
-public class WebDriverFactory {
+public class WebDriverFactory extends RemoteWebDriver{
 
     private static final Logger logger = LoggerFactory.getLogger(WebDriverFactory.class);
     private WebDriver webDriver;
@@ -56,10 +59,28 @@ public class WebDriverFactory {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("disable-infobars");
                 chromeOptions.addArguments("--start-maximized");
+  /*              ChromeOptions opt=new ChromeOptions();
+                opt.setExperimentalOption("debuggerAddress","localhost:9012");
+                System.setProperty("webdriver.chrome.driver", "C:\\Users\\ankit\\Downloads\\chromedriver.exe");
+                                WebDriver driver=new ChromeDriver(opt);
+                WebDriver driver=new ChromeDriver(chromeOptions);
+                Capabilities cap= ((RemoteWebDriver)driver).getCapabilities();
+                Map<String, Object> myCap=cap.asMap();
+                System.out.println("myCap: "+ myCap);
 
+*/
                 WebDriverManager.chromedriver().setup();
                 webDriver = new ChromeDriver(chromeOptions);
+
                 break;
+            case "edge":
+                System.setProperty("webdriver.edge.driver", "C:\\Users\\ankit\\Downloads\\edgedriver_win32\\msedgedriver.exe");
+                // Start Edge Session
+                webDriver = new EdgeDriver();
+                webDriver.manage().window().maximize();
+
+                break;
+
             default:
                 String errorMessage = String.format("%s is not a recognised option.", browser);
                 throw new IllegalStateException(errorMessage);

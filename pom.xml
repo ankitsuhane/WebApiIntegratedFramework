@@ -20,7 +20,7 @@
     <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
     <selenium-java.version>3.141.59</selenium-java.version>
     <slf4j-api.version>1.8.0-beta4</slf4j-api.version>
-    <webdrivermanager.version>4.1.0</webdrivermanager.version>
+    <webdrivermanager.version>4.3.1</webdrivermanager.version>
     <maven-cucumber-reporting.version>5.3.0</maven-cucumber-reporting.version>
     <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
     <rest-api-version>4.3.1</rest-api-version>
@@ -125,6 +125,11 @@
       <version>${hamcrest}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>4.0.1</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -184,7 +189,7 @@
             <systemPropertyVariables>
               <!-- <propertyName>${env.PARAM}</propertyName>browserName>CHROME</browserName>
                   <applicationName>MYA</applicationName> -->
-              <localRemote>container</localRemote>
+              <localRemote>local</localRemote>
             </systemPropertyVariables>
           </configuration>
         </plugin>

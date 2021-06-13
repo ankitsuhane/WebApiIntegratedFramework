@@ -4,7 +4,6 @@ import com.orgname.test.stepdefinitions.web.pagesactions.actions.HomePageAction;
 import cucumber.api.java8.En;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-
 import static org.junit.Assert.assertEquals;
 
 public class TestStepDefinition implements En {
@@ -20,7 +19,7 @@ public class TestStepDefinition implements En {
 		});
 
 		When("do nothing", () -> {
-			System.out.println("do nothing:" );
+			//System.out.println("do nothing:" );
 		});
 
 		Then("do nothings", () -> {

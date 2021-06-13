@@ -1,6 +1,6 @@
 Feature: API test here
 
-  @APIOuth
+  @APIOuth111
   Scenario: AIP Title of your scenario
     Given Hit API URL
     When check the reponse

@@ -23,6 +23,8 @@ public class Hooks {
         @Before ("@APIOuth or @Web")
         public void setupWeb() throws MalformedURLException {
             logger.info("Setting up Web Driver!");
+            webDriverFactory.setUpWebDriverLocal();
+/*
             switch (System.getProperty("localRemote")){
                 case "local":
                        webDriverFactory.setUpWebDriverLocal();
@@ -34,6 +36,7 @@ public class Hooks {
                     webDriverFactory.setUpWebDriverContainer();
                     break;
             }
+*/
         }
         @Before ("@API")
         public void setupApi(){

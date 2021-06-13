@@ -1,0 +1,10 @@
+com\orgname\test\stepdefinitions\Hooks.class
+com\orgname\test\AppConfig.class
+com\orgname\test\stepdefinitions\api\TestApidefinition.class
+com\orgname\test\stepdefinitions\web\pagesactions\actions\HomePageAction.class
+com\orgname\test\stepdefinitions\StepsBase.class
+com\orgname\test\stepdefinitions\web\pagesactions\pages\ContinueToLoginPage.class
+com\orgname\test\stepdefinitions\web\pagesactions\pages\HomePage.class
+com\orgname\test\stepdefinitions\web\pagesactions\actions\ContinueToLoginAction.class
+com\orgname\test\stepdefinitions\web\pagesactions\TestStepDefinition.class
+com\orgname\test\testRunner\TestRunner.class
