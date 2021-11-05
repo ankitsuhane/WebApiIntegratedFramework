@@ -43,7 +43,7 @@ public class HomePageAction extends BaseWebAction {
 
     private void callMethod() throws IOException, InterruptedException{
         if(i1==1) {
-            firstTime();
+            firstTime(url);
             i1++;
         }
 
@@ -95,12 +95,12 @@ public class HomePageAction extends BaseWebAction {
         }
     }
 
-    private void firstTime() throws IOException, InterruptedException{
+    public void firstTime(String url) throws IOException, InterruptedException{
         webDriverFactory.getWebDriver().get(url);
         Thread.sleep(2000);
         webDriverFactory.getWebDriver().findElement(By.linkText("EXISTING USER LOGIN")).click();
         Thread.sleep(2000);
-        webDriverFactory.getWebDriver().findElement(By.cssSelector("#user_name")).sendKeys("ashoksarojjbp@gmail.com");
+        webDriverFactory.getWebDriver().findElement(By.cssSelector("#emailID")).sendKeys("ashoksarojjbp@gmail.com");
         webDriverFactory.getWebDriver().findElement(By.cssSelector("#regpassword")).sendKeys("Redhat123");
         Thread.sleep(2000);
         webDriverFactory.getWebDriver().findElement(By.linkText("SIGN IN")).click();
