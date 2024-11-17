@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
@@ -38,7 +39,8 @@ public class WebDriverFactory {
 
     @Value("${containerUrl}")
     private String ContainerUrl;
-
+    @Autowired
+    private ChromeBrowser chromeBrowser;
 
     @Bean
     @Scope("cucumber-glue")
@@ -53,12 +55,7 @@ public class WebDriverFactory {
                 break;
             case "chrome":
                 logger.info("Running Chrome Web Driver with Driver Path:- {}");
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("disable-infobars");
-                chromeOptions.addArguments("--start-maximized");
-
-                WebDriverManager.chromedriver().setup();
-                webDriver = new ChromeDriver(chromeOptions);
+                webDriver = chromeBrowser.setupDriver();
                 break;
             default:
                 String errorMessage = String.format("%s is not a recognised option.", browser);

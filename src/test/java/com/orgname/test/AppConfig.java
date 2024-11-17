@@ -12,5 +12,5 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan(basePackages = {"com.orgname"})
 @PropertySource("classpath:application.properties")
 public class AppConfig {
-
+    private String myame= "ankit";
 }

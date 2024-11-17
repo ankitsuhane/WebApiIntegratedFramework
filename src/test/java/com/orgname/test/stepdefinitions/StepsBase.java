@@ -12,4 +12,5 @@ import cucumber.api.java8.En;
  */
 @ContextConfiguration(classes = {AppConfig.class})
 public class StepsBase implements En {
+    private String myame= "ankit";
 }

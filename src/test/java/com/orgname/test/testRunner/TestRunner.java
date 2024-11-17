@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 		features = "src/test/java/com/orgname/test/features",
 		glue = "com.orgname.test.stepdefinitions",
 		//dryRun=true,
-		 tags = {"@APIOuth or @Web"},
+		 tags = {"@Web"},
 		//tags = {"@BrowserStack"},
 		monochrome=true)
 
